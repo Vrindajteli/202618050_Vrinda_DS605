@@ -7,6 +7,6 @@
 
 ---
 
-## Project Overview
-This project demonstrates vectorized numerical computations using **NumPy** and exploratory data analysis/data wrangling using **Pandas** and **Seaborn/Matplotlib** on the Kaggle Titanic dataset.
+## Overview
+This notebook demonstrates vectorized numerical computations using **NumPy** and exploratory data analysis/data wrangling using **Pandas** and **Seaborn/Matplotlib** on the Kaggle Titanic dataset.
 
