@@ -1,0 +1,5 @@
+Model Setup,Train Acc,Test Acc,Precision,Recall,F1-Score
+LogReg + Pipeline A (StandardScaler),0.8193,0.8168,0.8048,0.6673,0.7296
+LogReg + Pipeline B (MinMaxScaler),0.8153,0.8138,0.8024,0.6596,0.724
+DecisionTree + Pipeline A (StandardScaler),0.9961,0.8527,0.7995,0.8039,0.8017
+DecisionTree + Pipeline B (MinMaxScaler),0.9961,0.8527,0.7998,0.8034,0.8016
