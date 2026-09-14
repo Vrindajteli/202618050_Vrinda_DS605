@@ -6,6 +6,7 @@ from pathlib import Path
 st.set_page_config(page_title="Airbnb Price Predictor", layout="centered")
 
 MODEL_DIR = Path(__file__).resolve().parent / "model"
+DATA_PATH = Path(__file__).resolve().parent / "AB_NYC_2019.csv"
 
 # ---------- Load the saved pipeline and metadata ----------
 @st.cache_resource
@@ -14,7 +15,17 @@ def load_model():
     metadata = joblib.load(MODEL_DIR / "model_metadata.pkl")
     return model, metadata
 
+@st.cache_data
+def load_centroids():
+    df = pd.read_csv(DATA_PATH)
+    # Average latitude and longitude per neighbourhood
+    centroids = df.groupby("neighbourhood")[["latitude", "longitude"]].mean().to_dict("index")
+    default_lat = df["latitude"].mean()
+    default_lon = df["longitude"].mean()
+    return centroids, default_lat, default_lon
+
 model, metadata = load_model()
+centroids_lookup, default_lat, default_lon = load_centroids()
 
 st.title("NYC Airbnb Price Predictor")
 st.write(
@@ -66,11 +77,16 @@ with st.form("listing_form"):
 
 # ---------- Prediction ----------
 if submitted:
+    # Dynamically retrieve coordinates for the selected neighbourhood
+    coords = centroids_lookup.get(neighbourhood, {})
+    lat = coords.get("latitude", default_lat)
+    lon = coords.get("longitude", default_lon)
+
     input_data = pd.DataFrame([{
         "neighbourhood_group": neighbourhood_group,
         "neighbourhood": neighbourhood,
-        "latitude": 40.73,
-        "longitude": -73.99,
+        "latitude": lat,
+        "longitude": lon,
         "room_type": room_type,
         "minimum_nights": minimum_nights,
         "number_of_reviews": number_of_reviews,
@@ -90,4 +106,3 @@ if submitted:
             "This estimate is near the top of what the model was trained on, "
             "so treat it as a lower bound rather than an exact number."
         )
-
