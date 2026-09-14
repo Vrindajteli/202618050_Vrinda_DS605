@@ -1,14 +1,17 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from pathlib import Path
 
 st.set_page_config(page_title="Airbnb Price Predictor", layout="centered")
+
+MODEL_DIR = Path(__file__).resolve().parent / "model"
 
 # ---------- Load the saved pipeline and metadata ----------
 @st.cache_resource
 def load_model():
-    model = joblib.load("model/airbnb_price_model.pkl")
-    metadata = joblib.load("model/model_metadata.pkl")
+    model = joblib.load(MODEL_DIR / "airbnb_price_model.pkl")
+    metadata = joblib.load(MODEL_DIR / "model_metadata.pkl")
     return model, metadata
 
 model, metadata = load_model()
