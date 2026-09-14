@@ -68,10 +68,6 @@ the lowest test RMSE is saved as the final model.
 
 **Final model:** *XG Boost*
 
-## App screenshots
-
-![alt text](image.png)
-
 ## Deployed app
 
 [https://airbnb-202618050.streamlit.app/]
