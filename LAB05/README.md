@@ -25,7 +25,3 @@ jupyter notebook Lab5_Garment_Productivity.ipynb
 - R² for the regression task stays fairly low across all versions — the dataset doesn't record several things that likely drive day-to-day productivity (worker experience, machine downtime, order-specific issues), so this is a limit of the available features rather than of any particular implementation.
 
 
-## Dataset
-
-Al Imran, A. (2020). *Productivity Prediction of Garment Employees* [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C51S6D
-
