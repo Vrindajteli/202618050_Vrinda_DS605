@@ -1,6 +1,7 @@
 # Lab 8: Decision Trees and Support Vector Machines
 
-Dataset: UCI Banknote Authentication (1,372 samples, 4 features, 2 classes). Split: 80/20 stratified (1,097 train / 275 test), `random_state=42`, used for every experiment.
+### Dataset: UCI Banknote Authentication
+### Student ID : 202618050
 
 ## Files
 - `Lab8_Decision_Tree_SVM.ipynb` - full solution with outputs and plots
