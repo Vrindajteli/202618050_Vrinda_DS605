@@ -5,3 +5,4 @@ joblib==1.6.0
 scikit-learn==1.7.2
 imbalanced-learn==0.14.2
 xgboost==3.4.1
+plotly
